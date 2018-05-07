@@ -5,11 +5,21 @@ import java.util.stream.Stream;
 public class TimeConverter {
 
     public String convertTime(String aTime) {
-
-    	
-    	int[] parts = Stream.of(aTime.split(":")).mapToInt(Integer::parseInt).toArray();
- 	
-    return	getSeconds(parts[2])+"\r\n"+getTopHours(parts[0])+"\r\n"+getBottomHours(parts[0])+"\r\n"+getTopMinutes(parts[1])+"\r\n"+getBottomMinutes(parts[1]);
+//Split the given String on the basis of :
+ 	String time[] = aTime.split(":");
+//Convert the string array to the integer array 	
+ 	 int[] parts = new int[time.length];
+     for (int i = 0; i < time.length; i++) {
+        String numberAsString = time[i];
+        parts[i] = Integer.parseInt(numberAsString);
+     }
+ //return the addition of all the methods with newline as the same is expected in testcase    
+    return getSeconds(parts[2])+"\r\n"+
+    getTopHours(parts[0])+"\r\n"+
+    getBottomHours(parts[0])+"\r\n"+
+    getTopMinutes(parts[1])+"\r\n"+
+    getBottomMinutes(parts[1]);
+    
     }
  
     protected String getSeconds(int number) {
